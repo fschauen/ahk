@@ -139,7 +139,8 @@ POS := {
     mainFocus   : {pos: {x: 0.18, y:  0}, size: {width: 0.64, height:  1 }},
 }
 
-^!r::Reload
+; Uncomment the following line while making changes for easy reload.
+; ^!r::Reload
 
 ; Make sure NumLock is active so that Numpad mappinfs below will work.
 SetNumLockState True
