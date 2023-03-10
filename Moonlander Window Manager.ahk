@@ -1,4 +1,6 @@
-﻿; Simple window manager for MS Windows, made to work in tandem with my
+﻿; See LICENSE file for copyright and license details.
+;
+; Simple window manager for MS Windows, made to work in tandem with my
 ; Moonlander keyboard configuration:
 ;
 ;   https://configure.zsa.io/moonlander/layouts/553D6/latest/0
