@@ -86,6 +86,18 @@ WinSetMonitor(target, WinTitle:="A")
     WinSetRelativeRect(WinGetRelativeRect(WinTitle), target, WinTitle)
 }
 
+openProgram(WinTitle, Target, WorkingDir, rect?)
+{
+    if WinExist(WinTitle) {
+        WinActivate(WinTitle)
+    } else {
+        Run(Target, WorkingDir)
+        if IsSet(rect)
+            if WinWait(WinTitle,,5)
+                WinSetRelativeRect(rect, 1, WinTitle)
+    }
+}
+
 POS := {
     ; 2x3 matrix
     upperLeft   : {pos: {x:   0, y:   0}, size: {width: 1/3, height: 1/2 }},
@@ -148,4 +160,16 @@ step := 50                 ;    dx     dy
 !^Numpad2::     WinTranslate(    0,  step) ; down  (J)
 !^Numpad8::     WinTranslate(    0, -step) ; up    (K)
 !^Numpad6::     WinTranslate( step,     0) ; right (L)
+
+; Launch programs
+!^+b::openProgram(
+    "ahk_class MozillaWindowClass",
+    "C:\Program Files\Mozilla Firefox\firefox.exe",
+    "C:\Program Files\Mozilla Firefox",
+    POS.mainFocus)
+
+!^+t::openProgram(
+    "ahk_class mintty",
+    'C:\Users\fernandos\AppData\Local\wsltty\bin\mintty.exe --WSL= --configdir="C:\Users\fernandos\AppData\Roaming\wsltty" -~  -p @1 -p 400,30 -s 120,48  -',
+    A_MyDocuments)
 
