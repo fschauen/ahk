@@ -1,4 +1,9 @@
-﻿; Returns the rectangle (position & size) of a given monitor.
+﻿; Simple window manager for MS Windows, made to work in tandem with my
+; Moonlander keyboard configuration:
+;
+;   https://configure.zsa.io/moonlander/layouts/553D6/latest/0
+
+; Returns the rectangle (position & size) of a given monitor.
 MonitorGetRect(N)
 {
     MonitorGetWorkArea(N, &left, &top, &right, &bottom)
@@ -147,8 +152,8 @@ SetNumLockState True
 !^Numpad3::     WinSetRelativeRect(POS.halfRight)
 
 ; Center and...
-!#NumpadAdd::   WinSetRelativeRect(POS.mainFocus) ; ... resize to default.
-!^Numpad5::     WinCenter()                     ; ... keep size.
+!#NumpadAdd::   WinSetRelativeRect(POS.mainFocus)   ; ... resize to default.
+!^Numpad5::     WinCenter()                         ; ... keep size.
 
 ; Move to other monitor (FIXME this is a hack, but works on my current setup)
 !^Left::        WinSetMonitor(2)
