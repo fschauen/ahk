@@ -3,6 +3,19 @@
 ;
 ;   https://configure.zsa.io/moonlander/layouts/553D6/latest/0
 
+TERMINAL_WIN := "ahk_class mintty"
+TERMINAL_CMD := "
+(LTrim Join`s
+    C:\Users\fernandos\AppData\Local\wsltty\bin\mintty.exe
+    --WSL=
+    --configdir="C:\Users\fernandos\AppData\Roaming\wsltty"
+    -~
+    -
+)"
+
+BROWSER_WIN:= "ahk_class MozillaWindowClass"
+BROWSER_CMD:= "C:\Program Files\Mozilla Firefox\firefox.exe"
+
 ; Returns the rectangle (position & size) of a given monitor.
 MonitorGetRect(N)
 {
@@ -167,14 +180,6 @@ step := 50                 ;    dx     dy
 !^Numpad6::     WinTranslate( step,     0) ; right (L)
 
 ; Launch programs
-!^+b::openProgram(
-    "ahk_class MozillaWindowClass",
-    "C:\Program Files\Mozilla Firefox\firefox.exe",
-    "C:\Program Files\Mozilla Firefox",
-    POS.mainFocus)
-
-!^+t::openProgram(
-    "ahk_class mintty",
-    'C:\Users\fernandos\AppData\Local\wsltty\bin\mintty.exe --WSL= --configdir="C:\Users\fernandos\AppData\Roaming\wsltty" -~  -p @1 -p 400,30 -s 120,48  -',
-    A_MyDocuments)
+!^+t::openProgram(TERMINAL_WIN, TERMINAL_CMD, A_Temp, POS.mainFocus)
+!^+b::openProgram(BROWSER_WIN, BROWSER_CMD, A_Temp, POS.mainFocus)
 
