@@ -3,6 +3,8 @@
 ;
 ;   https://configure.zsa.io/moonlander/layouts/553D6/latest/0
 
+try TraySetIcon("img\win_manager.ico")
+
 TERMINAL_WIN := "ahk_class mintty"
 TERMINAL_CMD := "
 (LTrim Join`s
