@@ -10,9 +10,9 @@ try TraySetIcon("img\win_manager.ico")
 TERMINAL_WIN := "ahk_class mintty"
 TERMINAL_CMD := "
 (LTrim Join`s
-    C:\Users\fernandos\AppData\Local\wsltty\bin\mintty.exe
+    C:\Users\fernando.schauenburg\AppData\Local\wsltty\bin\mintty.exe
     --WSL=
-    --configdir="C:\Users\fernandos\AppData\Roaming\wsltty"
+    --configdir="C:\Users\fernando.schauenburg\AppData\Roaming\wsltty"
     -~
     -
 )"
