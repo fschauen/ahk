@@ -122,25 +122,27 @@ openProgram(WinTitle, Target, WorkingDir, rect?)
 
 POS := {
     ; 2x3 matrix
-    upperLeft   : {pos: {x:   0, y:   0}, size: {width: 1/3, height: 1/2 }},
-    upperMiddle : {pos: {x: 1/3, y:   0}, size: {width: 1/3, height: 1/2 }},
-    upperRight  : {pos: {x: 2/3, y:   0}, size: {width: 1/3, height: 1/2 }},
-    lowerLeft   : {pos: {x:   0, y: 1/2}, size: {width: 1/3, height: 1/2 }},
-    lowerMiddle : {pos: {x: 1/3, y: 1/2}, size: {width: 1/3, height: 1/2 }},
-    lowerRight  : {pos: {x: 2/3, y: 1/2}, size: {width: 1/3, height: 1/2 }},
+    upperLeft     : {pos: {x:   0, y:   0}, size: {width: 1/4, height: 1/2 }},
+    upperMidLeft  : {pos: {x: 1/4, y:   0}, size: {width: 1/4, height: 1/2 }},
+    upperMidRight : {pos: {x: 2/4, y:   0}, size: {width: 1/4, height: 1/2 }},
+    upperRight    : {pos: {x: 3/4, y:   0}, size: {width: 1/4, height: 1/2 }},
+    lowerLeft     : {pos: {x:   0, y: 1/2}, size: {width: 1/4, height: 1/2 }},
+    lowerMidLeft  : {pos: {x: 1/4, y: 1/2}, size: {width: 1/4, height: 1/2 }},
+    lowerMidRight : {pos: {x: 2/4, y: 1/2}, size: {width: 1/4, height: 1/2 }},
+    lowerRight    : {pos: {x: 3/4, y: 1/2}, size: {width: 1/4, height: 1/2 }},
 
-    ; Full Height Thirds
-    thirdLeft   : {pos: {x:   0, y:   0}, size: {width: 1/3, height:   1 }},
-    doubleLeft  : {pos: {x:   0, y:   0}, size: {width: 2/3, height:   1 }},
-    thirdRight  : {pos: {x: 2/3, y:   0}, size: {width: 1/3, height:   1 }},
-    doubleRight : {pos: {x: 1/3, y:   0}, size: {width: 2/3, height:   1 }},
+    ; Full Height Thirds & Quarters
+    leftNarrow  : {pos: {x:   0, y:   0}, size: {width: 1/4, height:   1 }},
+    leftNormal  : {pos: {x:   0, y:   0}, size: {width: 1/3, height:   1 }},
+    rightNormal : {pos: {x: 2/3, y:   0}, size: {width: 1/3, height:   1 }},
+    rightNarrow : {pos: {x: 3/4, y:   0}, size: {width: 1/4, height:   1 }},
 
     ; Full Height Halves
     halfLeft    : {pos: {x:   0, y:   0}, size: {width: 1/2, height:   1 }},
     halfRight   : {pos: {x: 1/2, y:   0}, size: {width: 1/2, height:   1 }},
 
     ; Center
-    mainFocus   : {pos: {x: 0.18, y:  0}, size: {width: 0.64, height:  1 }},
+    mainFocus   : {pos: {x: 0.25, y:  0}, size: {width: 0.5, height:  1 }},
 }
 
 ; Uncomment the following line while making changes for easy reload.
@@ -149,21 +151,21 @@ POS := {
 ; Make sure NumLock is active so that Numpad mappinfs below will work.
 SetNumLockState True
 
-; 2x3 matrix
+; 2x4 matrix
 !#Numpad7::     WinSetRelativeRect(POS.upperLeft)
-!#NumpadDiv::   WinSetRelativeRect(POS.upperMiddle)
-!#Numpad8::     WinSetRelativeRect(POS.upperMiddle)
+!#NumpadDiv::   WinSetRelativeRect(POS.upperMidLeft)
+!#Numpad8::     WinSetRelativeRect(POS.upperMidRight)
 !#Numpad9::     WinSetRelativeRect(POS.upperRight)
 !#Numpad1::     WinSetRelativeRect(POS.lowerLeft)
-!#NumpadSub::   WinSetRelativeRect(POS.lowerMiddle)
-!#Numpad2::     WinSetRelativeRect(POS.lowerMiddle)
+!#NumpadSub::   WinSetRelativeRect(POS.lowerMidLeft)
+!#Numpad2::     WinSetRelativeRect(POS.lowerMidRight)
 !#Numpad3::     WinSetRelativeRect(POS.lowerRight)
 
 ; Full height thirds
-!#Numpad4::     WinSetRelativeRect(POS.thirdLeft)
-!#NumpadMult::  WinSetRelativeRect(POS.doubleLeft)
-!#Numpad5::     WinSetRelativeRect(POS.doubleRight)
-!#Numpad6::     WinSetRelativeRect(POS.thirdRight)
+!#Numpad4::     WinSetRelativeRect(POS.leftNarrow)
+!#NumpadMult::  WinSetRelativeRect(POS.leftNormal)
+!#Numpad5::     WinSetRelativeRect(POS.rightNormal)
+!#Numpad6::     WinSetRelativeRect(POS.rightNarrow)
 
 ; Full height halves
 !^Numpad1::     WinSetRelativeRect(POS.halfLeft)
