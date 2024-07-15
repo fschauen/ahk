@@ -142,6 +142,7 @@ POS := {
 
     ; Center
     mainFocus   : {pos: {x: 0.18, y:  0}, size: {width: 0.64, height:  1 }},
+    fullScreen  : {pos: {x:    0, y:  0}, size: {width:    1, height:  1 }},
 }
 
 ; Uncomment the following line while making changes for easy reload.
@@ -171,7 +172,7 @@ SetNumLockState True
 !^Numpad3::     WinSetRelativeRect(POS.halfRight)
 
 ; Center and...
-!#NumpadAdd::   WinSetRelativeRect(POS.mainFocus)   ; ... resize to default.
+!#NumpadAdd::   WinSetRelativeRect(POS.fullScreen)  ; ... make full screen.
 !^Numpad5::     WinCenter()                         ; ... keep size.
 
 ; Move to other monitor (FIXME this is a hack, but works on my current setup)
