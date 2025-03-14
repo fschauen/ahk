@@ -7,7 +7,7 @@
 
 try TraySetIcon("img\win_manager.ico")
 
-TERMINAL_WIN := "ahk_class mintty"
+TERMINAL_EXE := "ahk_exe mintty.exe"
 TERMINAL_CMD := "
 (LTrim Join`s
     C:\Users\fernando.schauenburg\AppData\Local\wsltty\bin\mintty.exe
@@ -17,9 +17,8 @@ TERMINAL_CMD := "
     -
 )"
 
-BROWSER_WIN:= "ahk_class MozillaWindowClass"
-; BROWSER_CMD:= "C:\Program Files\Mozilla Firefox\firefox.exe"
-BROWSER_CMD:= "C:\Users\fernando.schauenburg\AppData\Local\Mozilla\Firefox\firefox.exe"
+BROWSER_EXE := "ahk_exe librewolf.exe"
+BROWSER_CMD := "C:\Program Files\LibreWolf\librewolf.exe"
 
 ; Returns the rectangle (position & size) of a given monitor.
 MonitorGetRect(N)
@@ -109,15 +108,15 @@ WinSetMonitor(target, WinTitle:="A")
     WinSetRelativeRect(WinGetRelativeRect(WinTitle), target, WinTitle)
 }
 
-openProgram(WinTitle, Target, WorkingDir, rect?)
+openProgram(WinExe, Target, WorkingDir, rect?)
 {
-    if WinExist(WinTitle) {
-        WinActivate(WinTitle)
+    if WinExist(WinExe) {
+        WinActivate(WinExe)
     } else {
         Run(Target, WorkingDir)
         if IsSet(rect)
-            if WinWait(WinTitle,,5)
-                WinSetRelativeRect(rect, 1, WinTitle)
+            if WinWait(WinExe,,5)
+                WinSetRelativeRect(rect, 1, WinExe)
     }
 }
 
@@ -187,6 +186,6 @@ step := 50                 ;    dx     dy
 !^Numpad6::     WinTranslate( step,     0) ; right (L)
 
 ; Launch programs
-!^+t::openProgram(TERMINAL_WIN, TERMINAL_CMD, A_Temp, POS.mainFocus)
-!^+b::openProgram(BROWSER_WIN, BROWSER_CMD, A_Temp, POS.mainFocus)
+!^+t::openProgram(TERMINAL_EXE, TERMINAL_CMD, A_Temp, POS.mainFocus)
+!^+b::openProgram(BROWSER_EXE, BROWSER_CMD, A_Temp, POS.mainFocus)
 
