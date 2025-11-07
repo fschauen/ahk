@@ -95,14 +95,14 @@ WinSetRelativeRect(winRect, monitor?, WinTitle:="A")
     WinMove(x, y, width, height, WinTitle)
 }
 
-; Move a window wihtout changing its size.
+; Move a window without changing its size.
 WinTranslate(dx, dy, WinTitle:="A")
 {
     WinGetPos(&x, &y, &width, &height, WinTitle)
     WinMove(x + dx, y + dy, width, height, WinTitle)
 }
 
-; Move a window to a different monitor, ajusting the relative scaling.
+; Move a window to a different monitor, adjusting the relative scaling.
 WinSetMonitor(target, WinTitle:="A")
 {
     WinSetRelativeRect(WinGetRelativeRect(WinTitle), target, WinTitle)
@@ -147,7 +147,7 @@ POS := {
 ; Uncomment the following line while making changes for easy reload.
 ; ^!r::Reload
 
-; Make sure NumLock is active so that Numpad mappinfs below will work.
+; Make sure NumLock is active so that Numpad mappings below will work.
 SetNumLockState True
 
 ; 2x3 matrix
@@ -171,8 +171,8 @@ SetNumLockState True
 !^Numpad3::     WinSetRelativeRect(POS.halfRight)
 
 ; Center and...
-!#NumpadAdd::   WinSetRelativeRect(POS.fullScreen)  ; ... make full screen.
-!^Numpad5::     WinCenter()                         ; ... keep size.
+!#NumpadAdd::   WinSetRelativeRect(POS.fullScreen)  ; ...make full screen.
+!^Numpad5::     WinCenter()                         ; ...keep size.
 
 ; Move to other monitor (FIXME this is a hack, but works on my current setup)
 !^Left::        WinSetMonitor(2)
