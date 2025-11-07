@@ -108,6 +108,41 @@ WinSetMonitor(target, WinTitle:="A")
     WinSetRelativeRect(WinGetRelativeRect(WinTitle), target, WinTitle)
 }
 
+; Move a window one monitor in a given direction
+WinMoveMonitor(Direction, WinTitle:="A")
+{
+    WinGetPos(&x,, &width,, WinTitle)
+    windowCenter := x + width // 2
+
+    targetMonitor := -1
+    minDistance := 100 * 1000 * 1000
+
+    Loop MonitorGetCount() {
+        MonitorGetWorkArea(A_Index, &left, , &right)
+
+        if left <= windowCenter and windowCenter < right {
+            continue  ; skip window's current monitor
+        }
+
+        monitorCenter := left + (right - left) // 2
+
+        Switch Direction {
+            Case "Left":    distance := windowCenter - monitorCenter
+            Case "Right":   distance := monitorCenter - windowCenter
+            Default:        throw ValueError(Direction " is not a valid direction")
+        }
+
+        if 0 < distance and distance < minDistance {
+            minDistance := distance
+            targetMonitor := A_Index
+        }
+    }
+
+    if targetMonitor > -1 {
+        WinSetMonitor(targetMonitor, WinTitle)
+    }
+}
+
 openProgram(WinExe, Target, WorkingDir, rect?)
 {
     if WinExist(WinExe) {
@@ -174,9 +209,9 @@ SetNumLockState True
 !#NumpadAdd::   WinSetRelativeRect(POS.fullScreen)  ; ...make full screen.
 !^Numpad5::     WinCenter()                         ; ...keep size.
 
-; Move to other monitor (FIXME this is a hack, but works on my current setup)
-!^Left::        WinSetMonitor(2)
-!^Right::       WinSetMonitor(1)
+; Move to other monitor
+!^Left::        WinMoveMonitor("Left")
+!^Right::       WinMoveMonitor("Right")
 
 ; Move without resize
 step := 50                 ;    dx     dy
