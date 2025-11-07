@@ -17,8 +17,8 @@ TERMINAL_CMD := "
     -
 )"
 
-BROWSER_EXE := "ahk_exe librewolf.exe"
-BROWSER_CMD := "C:\Program Files\LibreWolf\librewolf.exe"
+BROWSER_EXE := "ahk_exe firefox.exe"
+BROWSER_CMD := "C:\Program Files\Mozilla Firefox\firefox.exe"
 
 ; Returns the rectangle (position & size) of a given monitor.
 MonitorGetRect(N)
