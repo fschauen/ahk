@@ -157,22 +157,30 @@ openProgram(WinExe, Target, WorkingDir, rect?)
 
 POS := {
     ; 2x3 matrix
-    upperLeft   : {pos: {x:   0, y:   0}, size: {width: 1/3, height: 1/2 }},
-    upperMiddle : {pos: {x: 1/3, y:   0}, size: {width: 1/3, height: 1/2 }},
-    upperRight  : {pos: {x: 2/3, y:   0}, size: {width: 1/3, height: 1/2 }},
-    lowerLeft   : {pos: {x:   0, y: 1/2}, size: {width: 1/3, height: 1/2 }},
-    lowerMiddle : {pos: {x: 1/3, y: 1/2}, size: {width: 1/3, height: 1/2 }},
-    lowerRight  : {pos: {x: 2/3, y: 1/2}, size: {width: 1/3, height: 1/2 }},
+    m2x3 : {
+        _11 : {pos: {x:   0, y:   0}, size: {width: 1/3, height: 1/2 }},
+        _12 : {pos: {x: 1/3, y:   0}, size: {width: 1/3, height: 1/2 }},
+        _13 : {pos: {x: 2/3, y:   0}, size: {width: 1/3, height: 1/2 }},
+        _21 : {pos: {x:   0, y: 1/2}, size: {width: 1/3, height: 1/2 }},
+        _22 : {pos: {x: 1/3, y: 1/2}, size: {width: 1/3, height: 1/2 }},
+        _23 : {pos: {x: 2/3, y: 1/2}, size: {width: 1/3, height: 1/2 }},
+    },
 
-    ; Full Height Thirds
-    thirdLeft   : {pos: {x:   0, y:   0}, size: {width: 1/3, height:   1 }},
-    doubleLeft  : {pos: {x:   0, y:   0}, size: {width: 2/3, height:   1 }},
-    thirdRight  : {pos: {x: 2/3, y:   0}, size: {width: 1/3, height:   1 }},
-    doubleRight : {pos: {x: 1/3, y:   0}, size: {width: 2/3, height:   1 }},
+    ; 1x3 matrix
+    m1x3 : {
+        _11 : {pos: {x:   0, y:   0}, size: {width: 1/3, height:   1 }},
+        _12 : {pos: {x: 1/3, y:   0}, size: {width: 1/3, height:   1 }},
+        _13 : {pos: {x: 2/3, y:   0}, size: {width: 1/3, height:   1 }},
 
-    ; Full Height Halves
-    halfLeft    : {pos: {x:   0, y:   0}, size: {width: 1/2, height:   1 }},
-    halfRight   : {pos: {x: 1/2, y:   0}, size: {width: 1/2, height:   1 }},
+        _11_12 : {pos: {x:   0, y:   0}, size: {width: 2/3, height:   1 }},
+        _12_13 : {pos: {x: 1/3, y:   0}, size: {width: 2/3, height:   1 }},
+    },
+
+    ; 1x2 matrix
+    m1x2 : {
+        _11 : {pos: {x:   0, y:   0}, size: {width: 1/2, height:   1 }},
+        _12 : {pos: {x: 1/2, y:   0}, size: {width: 1/2, height:   1 }},
+    },
 
     ; Center
     mainFocus   : {pos: {x: 0.18, y:  0}, size: {width: 0.64, height:  1 }},
@@ -185,25 +193,30 @@ POS := {
 ; Make sure NumLock is active so that Numpad mappings below will work.
 SetNumLockState True
 
+; # Win
+; ^ Ctrl
+; ! Alt
+; + Shift
+
 ; 2x3 matrix
-!#Numpad7::     WinSetRelativeRect(POS.upperLeft)
-!#NumpadDiv::   WinSetRelativeRect(POS.upperMiddle)
-!#Numpad8::     WinSetRelativeRect(POS.upperMiddle)
-!#Numpad9::     WinSetRelativeRect(POS.upperRight)
-!#Numpad1::     WinSetRelativeRect(POS.lowerLeft)
-!#NumpadSub::   WinSetRelativeRect(POS.lowerMiddle)
-!#Numpad2::     WinSetRelativeRect(POS.lowerMiddle)
-!#Numpad3::     WinSetRelativeRect(POS.lowerRight)
+!#Numpad7::     WinSetRelativeRect(POS.m2x3._11)
+!#NumpadDiv::   WinSetRelativeRect(POS.m2x3._12)
+!#Numpad8::     WinSetRelativeRect(POS.m2x3._12)
+!#Numpad9::     WinSetRelativeRect(POS.m2x3._13)
+!#Numpad1::     WinSetRelativeRect(POS.m2x3._21)
+!#NumpadSub::   WinSetRelativeRect(POS.m2x3._22)
+!#Numpad2::     WinSetRelativeRect(POS.m2x3._22)
+!#Numpad3::     WinSetRelativeRect(POS.m2x3._23)
 
 ; Full height thirds
-!#Numpad4::     WinSetRelativeRect(POS.thirdLeft)
-!#NumpadMult::  WinSetRelativeRect(POS.doubleLeft)
-!#Numpad5::     WinSetRelativeRect(POS.doubleRight)
-!#Numpad6::     WinSetRelativeRect(POS.thirdRight)
+!#Numpad4::     WinSetRelativeRect(POS.m1x3._11)
+!#NumpadMult::  WinSetRelativeRect(POS.m1x3._11_12)
+!#Numpad5::     WinSetRelativeRect(POS.m1x3._12_13)
+!#Numpad6::     WinSetRelativeRect(POS.m1x3._13)
 
 ; Full height halves
-!^Numpad1::     WinSetRelativeRect(POS.halfLeft)
-!^Numpad3::     WinSetRelativeRect(POS.halfRight)
+!^Numpad1::     WinSetRelativeRect(POS.m1x2._11)
+!^Numpad3::     WinSetRelativeRect(POS.m1x2._12)
 
 ; Center and...
 !#NumpadAdd::   WinSetRelativeRect(POS.fullScreen)  ; ...make full screen.
@@ -223,4 +236,3 @@ step := 50                 ;    dx     dy
 ; Launch programs
 !^+t::openProgram(TERMINAL_EXE, TERMINAL_CMD, A_Temp, POS.mainFocus)
 !^+b::openProgram(BROWSER_EXE, BROWSER_CMD, A_Temp, POS.mainFocus)
-
