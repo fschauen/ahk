@@ -212,26 +212,26 @@ SetNumLockState True
 
 ; 2x4 matrix
 !#Numpad7::     WinSetRelativeRect(POS.m2x4._11)
-!#NumpadDiv::   WinSetRelativeRect(POS.m2x4._12)
+!#NumpadMult::  WinSetRelativeRect(POS.m2x4._12)
 !#Numpad8::     WinSetRelativeRect(POS.m2x4._13)
 !#Numpad9::     WinSetRelativeRect(POS.m2x4._14)
 !#Numpad1::     WinSetRelativeRect(POS.m2x4._21)
-!#NumpadSub::   WinSetRelativeRect(POS.m2x4._22)
+!#NumpadAdd::   WinSetRelativeRect(POS.m2x4._22)
 !#Numpad2::     WinSetRelativeRect(POS.m2x4._23)
 !#Numpad3::     WinSetRelativeRect(POS.m2x4._24)
 
 ; Full height thirds
 !#Numpad4::     WinSetRelativeRect(POS.m1x3._11)
-!#NumpadMult::  WinSetRelativeRect(POS.m1x3._11_12)
+!#NumpadSub::   WinSetRelativeRect(POS.m1x3._11_12)
 !#Numpad5::     WinSetRelativeRect(POS.m1x3._12_13)
 !#Numpad6::     WinSetRelativeRect(POS.m1x3._13)
 
 ; Full height halves
-!^Numpad1::     WinSetRelativeRect(POS.m1x2._11)
-!^Numpad3::     WinSetRelativeRect(POS.m1x2._12)
+!^NumpadDiv::   WinSetRelativeRect(POS.m1x2._11)
+!^NumpadMult::  WinSetRelativeRect(POS.m1x2._12)
 
 ; Center and...
-!#NumpadAdd::   WinSetRelativeRect(POS.fullScreen)  ; ...make full screen.
+!^Up::          WinSetRelativeRect(POS.fullScreen)  ; ...make full screen.
 !^Numpad5::     WinCenter()                         ; ...keep size.
 
 ; Move to other monitor
