@@ -188,6 +188,14 @@ POS := {
         _12_13 : {pos: {x: 1/3, y:   0}, size: {width: 2/3, height:   1 }},
     },
 
+    ; 2x2 matrix
+    m2x2 : {
+        _11 : {pos: {x:   0, y:   0}, size: {width: 1/2, height:   1/2 }},
+        _12 : {pos: {x: 1/2, y:   0}, size: {width: 1/2, height:   1/2 }},
+        _21 : {pos: {x:   0, y: 1/2}, size: {width: 1/2, height:   1/2 }},
+        _22 : {pos: {x: 1/2, y: 1/2}, size: {width: 1/2, height:   1/2 }},
+    },
+
     ; 1x2 matrix
     m1x2 : {
         _11 : {pos: {x:   0, y:   0}, size: {width: 1/2, height:   1 }},
@@ -225,6 +233,12 @@ SetNumLockState True
 !#NumpadSub::   WinSetRelativeRect(POS.m1x3._11_12)
 !#Numpad5::     WinSetRelativeRect(POS.m1x3._12_13)
 !#Numpad6::     WinSetRelativeRect(POS.m1x3._13)
+
+; 2x2 matrix
+!^NumPad7::     WinSetRelativeRect(POS.m2x2._11)
+!^NumPad9::     WinSetRelativeRect(POS.m2x2._12)
+!^NumPad1::     WinSetRelativeRect(POS.m2x2._21)
+!^NumPad3::     WinSetRelativeRect(POS.m2x2._22)
 
 ; Full height halves
 !^NumpadDiv::   WinSetRelativeRect(POS.m1x2._11)
