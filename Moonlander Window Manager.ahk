@@ -156,6 +156,18 @@ openProgram(WinExe, Target, WorkingDir, rect?)
 }
 
 POS := {
+    ; 2x4 matrix
+    m2x4 : {
+        _11 : {pos: {x:   0, y:   0}, size: {width: 1/4, height: 1/2 }},
+        _12 : {pos: {x: 1/4, y:   0}, size: {width: 1/4, height: 1/2 }},
+        _13 : {pos: {x: 2/4, y:   0}, size: {width: 1/4, height: 1/2 }},
+        _14 : {pos: {x: 3/4, y:   0}, size: {width: 1/4, height: 1/2 }},
+        _21 : {pos: {x:   0, y: 1/2}, size: {width: 1/4, height: 1/2 }},
+        _22 : {pos: {x: 1/4, y: 1/2}, size: {width: 1/4, height: 1/2 }},
+        _23 : {pos: {x: 2/4, y: 1/2}, size: {width: 1/4, height: 1/2 }},
+        _24 : {pos: {x: 3/4, y: 1/2}, size: {width: 1/4, height: 1/2 }},
+    },
+
     ; 2x3 matrix
     m2x3 : {
         _11 : {pos: {x:   0, y:   0}, size: {width: 1/3, height: 1/2 }},
@@ -198,15 +210,15 @@ SetNumLockState True
 ; ! Alt
 ; + Shift
 
-; 2x3 matrix
-!#Numpad7::     WinSetRelativeRect(POS.m2x3._11)
-!#NumpadDiv::   WinSetRelativeRect(POS.m2x3._12)
-!#Numpad8::     WinSetRelativeRect(POS.m2x3._12)
-!#Numpad9::     WinSetRelativeRect(POS.m2x3._13)
-!#Numpad1::     WinSetRelativeRect(POS.m2x3._21)
-!#NumpadSub::   WinSetRelativeRect(POS.m2x3._22)
-!#Numpad2::     WinSetRelativeRect(POS.m2x3._22)
-!#Numpad3::     WinSetRelativeRect(POS.m2x3._23)
+; 2x4 matrix
+!#Numpad7::     WinSetRelativeRect(POS.m2x4._11)
+!#NumpadDiv::   WinSetRelativeRect(POS.m2x4._12)
+!#Numpad8::     WinSetRelativeRect(POS.m2x4._13)
+!#Numpad9::     WinSetRelativeRect(POS.m2x4._14)
+!#Numpad1::     WinSetRelativeRect(POS.m2x4._21)
+!#NumpadSub::   WinSetRelativeRect(POS.m2x4._22)
+!#Numpad2::     WinSetRelativeRect(POS.m2x4._23)
+!#Numpad3::     WinSetRelativeRect(POS.m2x4._24)
 
 ; Full height thirds
 !#Numpad4::     WinSetRelativeRect(POS.m1x3._11)
